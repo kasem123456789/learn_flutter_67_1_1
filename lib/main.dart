@@ -3,6 +3,8 @@ import 'package:learn_flutter_67_1_1/screen/home.dart';
 
 import 'package:learn_flutter_67_1_1/screen/item.dart';
 
+import 'package:learn_flutter_67_1_1/model/persn.dart';
+
 void main() {
   runApp(
     MaterialApp(
