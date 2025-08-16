@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class Item extends StatefulWidget {
   const Item({super.key});
 
@@ -7,58 +8,30 @@ class Item extends StatefulWidget {
 }
 
 class _ItemState extends State<Item> {
-  int quantity = 10;
-
-  void incrementQuantity() {
-    setState(() {
-      quantity++;
-    });
-  }
-
-  void decrementQuantity() {
-    setState(() {
-      quantity = quantity > 0 ? quantity - 1 : 0;
-    });
-  }
+  List data = ["สมชาย", "สมหญิง", "สมศรี", "สมปอง", "สมจิตร"];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Item Quantity"),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "Quantity: $quantity",
-              style: const TextStyle(fontSize: 24),
+    return ListView.builder(
+      itemCount: data.length,
+      itemBuilder: (context, index) {
+        return Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30),
+            color: Colors.purpleAccent,
+          ),
+          margin: EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+          padding: EdgeInsets.all(40),
+          child: Text(
+            data[index],
+            style: TextStyle(
+              fontSize: 28,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
             ),
-            const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  onPressed: decrementQuantity,
-                  child: const Text("-"),
-                ),
-                const SizedBox(width: 20),
-                ElevatedButton(
-                  onPressed: incrementQuantity,
-                  child: const Text("+"),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
-}
-
-void main() {
-  runApp(const MaterialApp(
-    home: Item(),
-  ));
 }
