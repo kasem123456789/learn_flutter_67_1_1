@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 import 'package:learn_flutter_67_1_1/model/persn.dart';
 
 class Item extends StatefulWidget {
@@ -17,7 +19,7 @@ class _ItemState extends State<Item> {
         return Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
-            color: Colors.purpleAccent,
+            color: personList[index].job.color, // ใช้สีจาก enum
           ),
           margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 8),
           padding: const EdgeInsets.all(20),
@@ -26,15 +28,25 @@ class _ItemState extends State<Item> {
             children: [
               Text(
                 personList[index].name,
-                style: const TextStyle(color: Colors.amber, fontSize: 20),
+                style: GoogleFonts.prompt(
+                  color: Colors.amber,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               Text(
                 "${personList[index].age} ปี",
-                style: const TextStyle(color: Colors.white, fontSize: 20),
+                style: GoogleFonts.prompt(
+                  color: Colors.white,
+                  fontSize: 18,
+                ),
               ),
               Text(
-                personList[index].job,
-                style: const TextStyle(color: Colors.white, fontSize: 20),
+                personList[index].job.title, // แสดง title จาก enum
+                style: GoogleFonts.prompt(
+                  color: Colors.white,
+                  fontSize: 18,
+                ),
               ),
             ],
           ),
