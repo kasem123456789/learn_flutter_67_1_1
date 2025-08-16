@@ -1,25 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:learn_flutter_67_1_1/screen/home.dart';
 
-class Home extends StatelessWidget {
-  const Home({super.key});
+import 'package:learn_flutter_67_1_1/screen/item.dart';
 
-  @override
-  Widget build(BuildContext context) {
-    // return Text("Hello Flutter Step 2");
-    return Center(
-      child: Container(
-        color: Colors.deepPurpleAccent,
-        margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-        padding: EdgeInsets.all(50),
-        child: Text(
-          "Hello Flutter Step4",
-          style: TextStyle(
-            fontSize: 25,
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
+void main() {
+  runApp(
+    MaterialApp(
+      title: "หัวข้อ",
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            "My App",
+            style: TextStyle(
+              color: Color.fromARGB(255, 255, 255, 254),
+              fontSize: 35,
+              fontWeight: FontWeight.bold,
+            ),
           ),
+          backgroundColor: Colors.deepPurple,
+          centerTitle: true,
         ),
+        body: const Home(), // เริ่มที่หน้า Home
+        floatingActionButton: Builder(
+          builder: (context) {
+            return FloatingActionButton(
+              child: const Icon(Icons.shopping_cart),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Item()),
+                );
+              },
+            );
+          },
+        ),
+        backgroundColor: const Color.fromARGB(255, 44, 43, 43),
       ),
-    );
-  }
+    ),
+  );
 }
